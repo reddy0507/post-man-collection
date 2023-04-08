@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "05f8ed6d-3fb1-4c43-b3a4-1fbefc26a370",
+		"name": "DemoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetGooglePage",
+			"_postman_id": "31ebbff8-b643-4f6f-8b5f-ae6be12ca109",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "www.google.com"
+			},
+			"response": []
+		},
+		{
+			"name": "data driven testing",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e364c45f-a047-42e6-8640-1a019cda31f1",
+						"exec": [
+							"pm.environment.get(\"variable_key\");\r",
+							"pm.globals.get(\"variable_key\");\r",
+							"pm.collectionVariables.get(\"variable_key\");\r",
+							"pm.environment.set(\"variable_key\", \"variable_value\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a7236a7-b02b-4e47-b84f-dc4693c101c2",
+						"exec": [
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"test\");\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\",\"application/json\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "3c030737-91ed-4c34-ba88-75054ce9cb60",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\"name\":\"{{name}}\",\r\n\"salary:{{salary}}\",\r\n\"age\":\"{{age}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dummy.restapiexample.com/api/v1/create"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b24f8442-8942-45e0-8f97-7607ff4d9800",
+				"type": "text/javascript",
+				"exec": [
+					"pm.globals.set(\"variable_key\", \"variable_value\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "892ca4f2-1801-4f99-a400-e0bfa0ffc09b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
